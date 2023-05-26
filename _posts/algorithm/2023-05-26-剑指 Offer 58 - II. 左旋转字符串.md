@@ -1,0 +1,45 @@
+# [剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
+
+字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"。
+
+**示例 1：**
+
+```
+输入: s = "abcdefg", k = 2
+输出: "cdefgab"
+```
+
+**示例 2：**
+
+```
+输入: s = "lrloseumgh", k = 6
+输出: "umghlrlose"
+```
+
+**限制：**
+
+- `1 <= k < s.length <= 10000`
+
+## 思路
+
+不使用额外空间的做法：先整体反转，实现整体左旋。再局部反转前几位。
+
+```java
+public String reverseLeftWords(String s, int n) {
+    char[] chars = s.toCharArray();
+    reverse(chars, 0, chars.length - 1);
+    reverse(chars, 0, chars.length - 1 - n);
+    reverse(chars, chars.length - n, chars.length - 1);
+    return new String(chars);
+}
+
+public void reverse(char[] chars, int left, int right) {
+    while (left < right) {
+        chars[left] ^= chars[right];
+        chars[right] ^= chars[left];
+        chars[left] ^= chars[right];
+        left++;
+        right--;
+    }
+}
+```
