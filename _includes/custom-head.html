@@ -3,4 +3,34 @@
 
   1. Head over to https://realfavicongenerator.net/ to add your own favicons.
   2. Customize default _includes/custom-head.html in your source directory and insert the given code snippet.
+
+  <!-- 文章搜索 https://github.com/christian-fei/Simple-Jekyll-Search -->
+
+    <div id="search-demo-container">
+      <input type="search" id="search-input" placeholder="search...">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div>
+
+    <script src="{{ site.baseurl }}/js/simple-jekyll-search.min.js"></script>
+
+    <script>
+      window.simpleJekyllSearch = new SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ site.baseurl }}/search.json',
+        searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>',
+        noResultsText: 'No results found',
+        limit: 10,
+        fuzzy: false,
+        exclude: ['Welcome']
+      })
+    </script>
+    <!-- 文章搜索 https://github.com/christian-fei/Simple-Jekyll-Search -->
+
 {% endcomment %}
