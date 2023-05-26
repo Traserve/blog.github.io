@@ -35,12 +35,12 @@ layout: default
   {% if paginator.previous_page %}
     <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: relative_url }}">Pre</a>
   {% else %}
-    <span class="pagination-item newer">Newer</span>
+    <span class="pagination-item newer">Pre</span>
   {% endif %}
 
   {% if paginator.next_page %}
     <a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">Next</a>
   {% else %}
-    <span class="pagination-item older">Older</span>
+    <span class="pagination-item older">Next</span>
   {% endif %}
 </div>
